@@ -1,0 +1,26 @@
+.rank{
+    width: 25%;
+}
+
+.name{
+    width: 30%;
+}
+
+.points{
+    width: 27%;
+}
+
+.highlight {
+    background-color: lightgreen;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-gap: 10px; /* Gap between grid items */
+}
+
+.grid-container img {
+    width: 100%; /* Make images fill the grid cell */
+    height: auto; /* Maintain aspect ratio */
+  }
