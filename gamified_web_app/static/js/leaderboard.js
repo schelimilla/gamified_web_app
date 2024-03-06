@@ -75,12 +75,19 @@ displayImages();
 function checkUserRank(leaderboardData) {
     leaderboardData.forEach((entry) => {
         if (entry.name === "YOU"){
-            if (entry.rank === 6){
+            if (entry.rank === 1){
                 imageUrls[0] = "static/img/leaderboard_1.png";
+                sessionStorage.setItem('image_urls', JSON.stringify(imageUrls));   
+            }
+            if (entry.rank === 2){
+                imageUrls[1] = "static/img/leaderboard_2.png";
+                sessionStorage.setItem('image_urls', JSON.stringify(imageUrls));   
+            }
+            if (entry.rank === 3){
+                imageUrls[2] = "static/img/leaderboard_3.png";
                 sessionStorage.setItem('image_urls', JSON.stringify(imageUrls));   
             }
         }
     });
     displayImages();
 }
-
