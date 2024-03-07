@@ -19,5 +19,9 @@ def leaderboard():
 def data_types():
     return render_template('data_types.html', data_types_questions=data_types_questions)
 
+@app.route('/string_methods')
+def string_methods():
+    return render_template('string_methods.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

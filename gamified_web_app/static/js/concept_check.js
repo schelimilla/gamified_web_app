@@ -31,12 +31,10 @@ function updateLeaderboard(newScore) {
     }
 }
 
-// var selectedCorrectAnswer = false;
-// var selectedCorrectAnswerAgain = false;
-// var selectedWrongAnswer = false;
 
 const data = sessionStorage.getItem('data_types_answered');
 const entries = JSON.parse(data) || [];
+
 
 // Get all radio buttons
 var radioButtons = document.querySelectorAll('input[type="radio"]');
@@ -129,5 +127,20 @@ radioButtons.forEach(function(radioButton) {
         updatePointsDisplay(total_points);
         updateLeaderboard(points_earned);
     });
-
 });
+
+// function updateProgress(){
+//     window.addEventListener('load', function() {
+//         const data = sessionStorage.getItem('data_types_answered');
+//         var entries = JSON.parse(data) || [];
+//         var data_types_answered_counter = 0;
+//         entries.forEach(entry => {
+//             if (entry.answered === "true"){
+//             data_types_answered_counter += 1;
+//             }
+//         });
+//         var percentCorrect = Math.floor((data_types_answered_counter/7)*100);
+//         document.getElementById('percentCorrectValue').textContent = percentCorrect;
+//     });
+// }
+// updateProgress();
