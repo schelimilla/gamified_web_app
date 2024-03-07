@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from global_data import leaderboard_data, data_types_questions
+from global_data import leaderboard_data, data_types_questions, string_methods_questions
 
 app = Flask(__name__)
 
@@ -21,7 +21,7 @@ def data_types():
 
 @app.route('/string_methods')
 def string_methods():
-    return render_template('string_methods.html')
+    return render_template('string_methods.html', string_methods_questions=string_methods_questions)
 
 if __name__ == '__main__':
     app.run(debug=True)

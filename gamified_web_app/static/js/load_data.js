@@ -36,6 +36,27 @@ if (dataTypesAnsweredFromStorage === null){
     sessionStorage.setItem('data_types_answered', JSON.stringify(data_types_answered));
 }
 
+string_methods_answered = [
+    {"question_num": '1', "answered": "false"},
+    {"question_num": '2', "answered": "false"},
+    {"question_num": '3', "answered": "false"},
+    {"question_num": '4', "answered": "false"},
+    {"question_num": '5', "answered": "false"},
+    {"question_num": '6', "answered": "false"},
+    {"question_num": '7', "answered": "false"},
+    {"question_num": '8', "answered": "false"},
+    {"question_num": '9', "answered": "false"},
+    {"question_num": '10', "answered": "false"},
+    {"question_num": '11', "answered": "false"},
+    {"question_num": '12', "answered": "false"},
+]
+
+
+const stringMethodsAnsweredFromStorage = sessionStorage.getItem('string_methods_answered');
+if (stringMethodsAnsweredFromStorage === null){
+    sessionStorage.setItem('string_methods_answered', JSON.stringify(string_methods_answered));
+}
+
 
 var image_urls = [
     "static/img/locked.png",

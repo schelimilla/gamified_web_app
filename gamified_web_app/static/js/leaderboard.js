@@ -33,6 +33,7 @@ window.addEventListener('load', function() {
 
 
 window.addEventListener('load', function() {
+    // data types progress
     const data = sessionStorage.getItem('data_types_answered');
     const entries = JSON.parse(data) || [];
     var data_types_answered_counter = 0;
@@ -48,7 +49,25 @@ window.addEventListener('load', function() {
     progressBar.style.width = progressWidth;
     progressBar.textContent = progressWidth;
 
+    // data types progress
+    const data_sm = sessionStorage.getItem('string_methods_answered');
+    const entries_sm = JSON.parse(data_sm) || [];
+    var string_methods_answered_counter = 0;
+    entries_sm.forEach(entry => {
+      if (entry.answered === "true"){
+        string_methods_answered_counter += 1;
+      }
+    });
+    
+    var percentCorrect2 = Math.floor((string_methods_answered_counter/12)*100);
+    var progressWidth2 = percentCorrect2 + '%';
+    var progressBar2 = document.querySelector('.pb2');
+    progressBar2.style.width = progressWidth2;
+    progressBar2.textContent = progressWidth2;
+
+    // check progress
     checkProgress(data_types_answered_counter);
+
   });
 
 ///////
