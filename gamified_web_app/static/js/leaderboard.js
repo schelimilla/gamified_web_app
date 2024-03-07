@@ -35,20 +35,20 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     const data = sessionStorage.getItem('data_types_answered');
     const entries = JSON.parse(data) || [];
-    var answered_counter = 0;
+    var data_types_answered_counter = 0;
     entries.forEach(entry => {
       if (entry.answered === "true"){
-        answered_counter += 1;
+        data_types_answered_counter += 1;
       }
     });
-    // var display_answered_correctly = document.getElementById("answered_correctly");
-    // display_answered_correctly.textContent = answered_counter;
     
-    var percentCorrect = Math.floor((answered_counter/7)*100);
+    var percentCorrect = Math.floor((data_types_answered_counter/7)*100);
     var progressWidth = percentCorrect + '%';
     var progressBar = document.querySelector('.pb1');
     progressBar.style.width = progressWidth;
     progressBar.textContent = progressWidth;
+
+    checkProgress(data_types_answered_counter);
   });
 
 ///////
@@ -91,3 +91,15 @@ function checkUserRank(leaderboardData) {
     });
     displayImages();
 }
+
+////
+
+function checkProgress(data_types_answered_counter){
+    console.log("counter: " + data_types_answered_counter);
+    if (data_types_answered_counter === 7){
+        imageUrls[3] = "static/img/mastery_1.png";
+        sessionStorage.setItem('image_urls', JSON.stringify(imageUrls)); 
+    }
+    displayImages();
+}
+
