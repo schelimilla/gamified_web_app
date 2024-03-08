@@ -66,7 +66,7 @@ window.addEventListener('load', function() {
     progressBar2.textContent = progressWidth2;
 
     // check progress
-    checkProgress(data_types_answered_counter);
+    checkProgress(data_types_answered_counter, string_methods_answered_counter);
 
   });
 
@@ -76,15 +76,41 @@ var imageUrls = JSON.parse(sessionStorage.getItem('image_urls')) || [];
 
 
 function displayImages() {
-var container = document.getElementById("image-container");
-container.innerHTML = ""; 
+    var card_titles = [
+        "Rank 1", "Rank 2", "Rank 3",
+        "Completed 1 Concept", "Completed 2 Concepts", "Completed 3 Concepts",
+        "Completed All Concepts", "Earned 50 points", "Earned 100 points"
+    ]
+    var title_counter = 0;
 
-imageUrls.forEach(function(url) {
-    var img = document.createElement("img");
-    img.src = url;
-    img.alt = "Image";
-    container.appendChild(img);
-});
+    var container = document.getElementById("image-container");
+    container.innerHTML = ""; 
+
+    imageUrls.forEach(function(url) {
+        var card = document.createElement("div");
+        card.className = "card";
+
+        var cardBody = document.createElement("div");
+        cardBody.className = "card-body";
+
+        var title = document.createElement("h6");
+        title.style.fontSize = "70%";
+        title.className = "card-title";
+        title.textContent = card_titles[title_counter];
+        title_counter += 1;
+
+        var img = document.createElement("img");
+        img.src = url;
+        img.className = "card-img-top";
+        img.alt = "Image";
+
+        cardBody.appendChild(title);
+        cardBody.appendChild(img)
+
+        card.appendChild(cardBody);
+
+        container.appendChild(card);
+    });
 }
 
 displayImages();
@@ -96,14 +122,25 @@ function checkUserRank(leaderboardData) {
         if (entry.name === "YOU"){
             if (entry.rank === 1){
                 imageUrls[0] = "static/img/leaderboard_1.png";
+                imageUrls[1] = "static/img/leaderboard_2.png";
+                imageUrls[2] = "static/img/leaderboard_3.png";
                 sessionStorage.setItem('image_urls', JSON.stringify(imageUrls));   
             }
             if (entry.rank === 2){
                 imageUrls[1] = "static/img/leaderboard_2.png";
+                imageUrls[2] = "static/img/leaderboard_3.png";
                 sessionStorage.setItem('image_urls', JSON.stringify(imageUrls));   
             }
             if (entry.rank === 3){
                 imageUrls[2] = "static/img/leaderboard_3.png";
+                sessionStorage.setItem('image_urls', JSON.stringify(imageUrls));   
+            }
+            if (entry.points >= 50 && entry.points < 100){
+                imageUrls[7] = "static/img/50_points.png";
+                sessionStorage.setItem('image_urls', JSON.stringify(imageUrls));   
+            }
+            if (entry.points >= 100){
+                imageUrls[8] = "static/img/100_points.png";
                 sessionStorage.setItem('image_urls', JSON.stringify(imageUrls));   
             }
         }
@@ -113,10 +150,21 @@ function checkUserRank(leaderboardData) {
 
 ////
 
-function checkProgress(data_types_answered_counter){
-    console.log("counter: " + data_types_answered_counter);
+function checkProgress(data_types_answered_counter, string_methods_answered_counter){
+    var total_concepts_counter = 0;
     if (data_types_answered_counter === 7){
+        total_concepts_counter += 1;
+    }
+    if (string_methods_answered_counter === 12){
+        total_concepts_counter += 1;
+    }
+
+    if (total_concepts_counter == 1){
         imageUrls[3] = "static/img/mastery_1.png";
+        sessionStorage.setItem('image_urls', JSON.stringify(imageUrls)); 
+    }
+    if (total_concepts_counter == 2){
+        imageUrls[4] = "static/img/mastery_2.png";
         sessionStorage.setItem('image_urls', JSON.stringify(imageUrls)); 
     }
     displayImages();

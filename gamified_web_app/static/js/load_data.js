@@ -4,9 +4,9 @@ function saveLeaderboardData(data) {
 }
 
 const leaderboardData = [
-    {'rank': 1, 'name': 'John', 'points': 92},
-    {'rank': 2, 'name': 'Jane', 'points': 87},
-    {'rank': 3, 'name': 'Alex', 'points': 60},
+    {'rank': 1, 'name': 'John', 'points': 110},
+    {'rank': 2, 'name': 'Jane', 'points': 93},
+    {'rank': 3, 'name': 'Alex', 'points': 74},
     {'rank': 4, 'name': 'Stacy', 'points': 45},
     {'rank': 5, 'name': 'Jolene', 'points':21},
     {'rank': 6, 'name': 'YOU', 'points': 0},

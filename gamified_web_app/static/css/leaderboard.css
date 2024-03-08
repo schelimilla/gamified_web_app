@@ -21,6 +21,23 @@
 }
 
 .grid-container img {
-    width: 100%; /* Make images fill the grid cell */
-    height: auto; /* Maintain aspect ratio */
-  }
+    width: 100%; 
+    height: auto;
+}
+
+
+.card {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 8rem;
+    height: 9rem;
+    padding: 3%;
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    padding: 1%;
+}
