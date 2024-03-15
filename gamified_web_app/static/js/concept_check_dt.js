@@ -85,6 +85,7 @@ radioButtons.forEach(function(radioButton) {
         if (this.checked) {
             // Display different message based on the selected option
             updateQuestionAnswered('true');
+            document.getElementById('completedText').textContent = "You have started this activity! Would you like to start over?";
             if (selectedAnswer === correctAnswer) {
                 // console.log("correct answer selected");
                 pointsBadge.style.backgroundColor = "#6AFF33";
@@ -126,21 +127,31 @@ radioButtons.forEach(function(radioButton) {
         // console.log("TOTAL POINTS: " + total_points);
         updatePointsDisplay(total_points);
         updateLeaderboard(points_earned);
+        updateProgress();
     });
 });
 
-// function updateProgress(){
-//     window.addEventListener('load', function() {
-//         const data = sessionStorage.getItem('data_types_answered');
-//         var entries = JSON.parse(data) || [];
-//         var data_types_answered_counter = 0;
-//         entries.forEach(entry => {
-//             if (entry.answered === "true"){
-//             data_types_answered_counter += 1;
-//             }
-//         });
-//         var percentCorrect = Math.floor((data_types_answered_counter/7)*100);
-//         document.getElementById('percentCorrectValue').textContent = percentCorrect;
-//     });
-// }
-// updateProgress();
+function updateProgress(){
+    window.addEventListener('load', function() {
+        const data = sessionStorage.getItem('data_types_answered');
+        var entries = JSON.parse(data) || [];
+        var data_types_answered_counter = 0;
+        entries.forEach(entry => {
+            if (entry.answered === "true"){
+            data_types_answered_counter += 1;
+            }
+        });
+        // var percentCorrect = Math.floor((data_types_answered_counter/7)*100);
+        if (data_types_answered_counter == 7){
+            document.getElementById('completedText').textContent = "You've already completed this activity! Would you like to start over?";
+        }
+        else if (data_types_answered_counter > 0){
+            document.getElementById('completedText').textContent = "You've already started this activity! Would you like to start over?";
+        }
+        else {
+            document.getElementById('completedText').textContent = "You have not started this activity!";
+        }
+        
+    });
+}
+updateProgress();
