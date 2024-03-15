@@ -274,6 +274,7 @@
         <div class="col text-center">
           <!-- <div> -->
               <!-- <h4 id="percentCorrectText" style="margin-bottom: 6%; margin-top: -4%;">You've completed <span id="percentCorrectValue"></span>% of this activity</h4> -->
+              <h4 id="completedText" style="margin-bottom: 6%; margin-top: -4%;"><span id="completedText"></span></h4>
               <button class="btn btn-secondary" style="margin-top: -9%;" onclick="resetStringMethodsAnswered()">Start Over</button>
           <!-- </div> -->
         </div>
@@ -297,6 +298,7 @@
           ]   
 
           sessionStorage.setItem('string_methods_answered', JSON.stringify(string_methods_answered));
+          document.getElementById('completedText').textContent = "You have not started this activity!";
         }
       </script>
 
